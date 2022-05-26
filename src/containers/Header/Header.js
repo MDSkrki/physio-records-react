@@ -9,12 +9,7 @@ export const Header = () => {
       <Navbar fixed="top" bg="dark" variant="dark" collapseOnSelect expand="md">
         <Container fluid>
           <Navbar.Brand href="/">
-            <img
-              src={logo}
-              alt="Physio-Records Logo"
-              height="64"
-              width="64"
-            />
+            <img src={logo} alt="Physio-Records Logo" height="64" width="64" />
             Physio-Records
           </Navbar.Brand>
           <Navbar.Toggle />
