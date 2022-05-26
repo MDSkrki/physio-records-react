@@ -2,6 +2,8 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
+import isEmail from "validator/lib/isEmail";
+import isEmpty from "validator/lib/isEmpty";
 
 export const Register = () => {
   const [form, setForm] = useState({});
@@ -23,13 +25,14 @@ export const Register = () => {
     const { email, password } = form;
     const newErrors = {};
     // Email validations
-    if (!email || email.length < 1) newErrors.email = "Email cannot be empty";
-    if (email && !email.includes("@"))
+    if (!email || isEmpty(email)) newErrors.email = "Email cannot be empty";
+    if (email && !isEmail(email))
       newErrors.email = "This does not look like an email";
 
     // Password validations
-    if (!password || !password.trim())
-      newErrors.password = "Password field cannot be empty";
+    if (!password || isEmpty(password))
+      newErrors.password = "Password cannot be empty";
+
     return newErrors;
   };
 
