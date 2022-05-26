@@ -2,12 +2,15 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
+import { useDispatch } from "react-redux";
 import isEmail from "validator/lib/isEmail";
 import isEmpty from "validator/lib/isEmpty";
+import { register } from "../../store/reducers/authReducer";
 
 export const Register = () => {
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
+  const dispatch = useDispatch();
   const formHandler = (e) => {
     setForm({
       ...form,
@@ -39,7 +42,11 @@ export const Register = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     const newErrors = findFormErrors();
-    if (Object.keys(newErrors).length > 0) setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    dispatch(register(form));
   };
   return (
     <>
