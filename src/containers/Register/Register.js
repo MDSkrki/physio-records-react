@@ -22,7 +22,7 @@ export const Register = () => {
   };
   return (
     <>
-      <Form className="mx-4">
+      <Form className="mx-4" onSubmit={submitHandler}>
         <h2>First-time Contact information</h2>
         <FormField
           formHandler={formHandler}
@@ -59,7 +59,7 @@ export const Register = () => {
           />
         </Form.Group>
 
-        <Button variant="dark" onClick={submitHandler}>
+        <Button variant="dark" type="submit">
           Submit
         </Button>
       </Form>
