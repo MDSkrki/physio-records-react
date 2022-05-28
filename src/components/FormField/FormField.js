@@ -1,7 +1,7 @@
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 
-export const FormField = ({ formHandler, errors, name, label }) => {
+export const FormField = ({ formHandler, name, label }) => {
   let type = "text";
 
   if (name === "email") type = name;
@@ -14,14 +14,10 @@ export const FormField = ({ formHandler, errors, name, label }) => {
         <FloatingLabel label={label}>
           <Form.Control
             type={type}
-            placeholder="Enter your email here"
             name={name}
             onChange={formHandler}
-            isInvalid={errors[name]}
+            required
           />
-          <Form.Control.Feedback type="invalid">
-            {errors[name]}
-          </Form.Control.Feedback>
         </FloatingLabel>
       </Form.Group>
     </>
