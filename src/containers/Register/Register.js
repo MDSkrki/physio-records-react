@@ -51,9 +51,50 @@ export const Register = () => {
   return (
     <>
       <Form className="mx-4">
-        <h2>Please register using an email and password</h2>
-        <FormField errors={errors} formHandler={formHandler} name="email" />
-        <FormField errors={errors} formHandler={formHandler} name="password" />
+        <h2>First-time Contact information</h2>
+        <FormField
+          errors={errors}
+          formHandler={formHandler}
+          name="email"
+          label="Enter your email"
+        />
+        <FormField
+          errors={errors}
+          formHandler={formHandler}
+          name="password"
+          label="Enter your password"
+        />
+        <FormField
+          errors={errors}
+          formHandler={formHandler}
+          name="name"
+          label="Enter your name"
+        />
+        <FormField
+          errors={errors}
+          formHandler={formHandler}
+          name="surname"
+          label="Enter your Surname"
+        />
+        <FormField
+          errors={errors}
+          formHandler={formHandler}
+          name="phone_number"
+          label="Please enter your phone number (including prefix)"
+        />
+        <Form.Group className="my-3">
+          <Form.Label>Background information</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            name="background_information"
+            onChange={formHandler}
+          />
+          <Form.Control.Feedback type="invalid">
+            {errors["background_information"]}
+          </Form.Control.Feedback>
+        </Form.Group>
+
         <Button type="submit" variant="dark" onClick={submitHandler}>
           Submit
         </Button>
