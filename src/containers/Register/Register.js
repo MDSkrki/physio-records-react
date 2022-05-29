@@ -4,21 +4,22 @@ import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
 import { register } from "../../store/reducers/authReducer";
 import { FormField } from "../../components/FormField/FormField";
+import { useForm } from "../../shared/hooks/useForm";
 
 export const Register = () => {
-  const [form, setForm] = useState({});
+  const [formData, formHandler] = useForm({});
   const dispatch = useDispatch();
-  const formHandler = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-    console.log(form);
-  };
+  //   const formHandler = (e) => {
+  //     setForm({
+  //       ...form,
+  //       [e.target.name]: e.target.value,
+  //     });
+  //     console.log(form);
+  //   };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(register(form));
+    dispatch(register(formData));
   };
   return (
     <>
