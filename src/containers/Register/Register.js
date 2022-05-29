@@ -1,9 +1,10 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
-import { register } from "../../store/reducers/authReducer";
+import { user } from "../../store/reducers/userReducer";
 import { FormField } from "../../components/FormField/FormField";
 import { useForm } from "../../shared/hooks/useForm";
+import { apiConsumer } from "../../services/apiConsumer";
 
 export const Register = () => {
   // Hooks
@@ -11,9 +12,10 @@ export const Register = () => {
   const dispatch = useDispatch();
 
   // Handlers
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    dispatch(register(formData));
+    const res = await apiConsumer("POST", "/user/register", formData);
+    dispatch(user(res.id));
   };
   return (
     <>
