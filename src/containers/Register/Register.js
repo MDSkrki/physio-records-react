@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
@@ -7,16 +6,11 @@ import { FormField } from "../../components/FormField/FormField";
 import { useForm } from "../../shared/hooks/useForm";
 
 export const Register = () => {
+  // Hooks
   const [formData, formHandler] = useForm({});
   const dispatch = useDispatch();
-  //   const formHandler = (e) => {
-  //     setForm({
-  //       ...form,
-  //       [e.target.name]: e.target.value,
-  //     });
-  //     console.log(form);
-  //   };
 
+  // Handlers
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(register(formData));
