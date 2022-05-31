@@ -4,7 +4,9 @@
 $theme-colors: (
     "primary": #78909c,
     "light": #a7c0cd,
-    "dark": #4b636e
+    "dark": #4b636e,
+    "success": #198754,
+    "error": #dc3545,
 );
 
 @import "~bootstrap/scss/bootstrap";
