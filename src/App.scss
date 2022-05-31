@@ -1,10 +1,12 @@
 @import './custom.scss';
+@import './components/Banner/Banner.scss';
 
 .App {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding-top: 20vh;
 }
 
 .App-logo {
