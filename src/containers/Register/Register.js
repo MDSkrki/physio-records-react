@@ -5,6 +5,7 @@ import { user } from "../../store/reducers/userReducer";
 import { FormField } from "../../components/FormField/FormField";
 import { useForm } from "../../shared/hooks/useForm";
 import { apiConsumer } from "../../services/apiConsumer";
+import { show } from "../../store/reducers/bannerReducer";
 
 export const Register = () => {
   // Hooks
@@ -15,7 +16,13 @@ export const Register = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     const res = await apiConsumer("POST", "/user/register", formData);
+    if (!res) {
+      dispatch(show({ variant: "error", message: "There has been an error" }));
+    }
     dispatch(user(res.id));
+    dispatch(
+      show({ variant: "success", message: "User has registered successfully!" })
+    );
   };
   return (
     <>
